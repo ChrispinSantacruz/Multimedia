@@ -1,36 +1,11 @@
 // src/App.tsx
-import { Canvas } from '@react-three/fiber'
-import { OrbitControls } from '@react-three/drei'
-import { Robot } from './components/models/Robot' // 👈 Importa el modelo
+import GeometryExplorer from './components/GeometryExplorer/GeometryExplorer'
 
 export default function App() {
+  // El contenedor ocupa todo el viewport para que la escena use 100% del espacio
   return (
-    <Canvas
-      camera={{
-        position: [10, 10, 10],
-        fov: 60,
-        near: 0.1,
-        far: 1000
-      }}
-      style={{
-        width: '100vw',
-        height: '100vh',
-      }}
-    >
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[3, 3, 3]} intensity={1} />
-
-      {/* Tu cubo */}
-      <mesh rotation={[0.5, 0.5, 0]}>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color="#44aa88" />
-      </mesh>
-
-      {/* El robot 👇 */}
-      <Robot position={[10, 0, 0]} rotation={[100, Math.PI / 4, 0]} scale={1.2} />
-
-
-      <OrbitControls enableDamping />
-    </Canvas>
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <GeometryExplorer />
+    </div>
   )
 }
